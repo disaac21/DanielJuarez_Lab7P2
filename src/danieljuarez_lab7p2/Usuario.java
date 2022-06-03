@@ -5,14 +5,16 @@ public class Usuario {
     public String Username;
     public String Password;
     public int Edad;
+    public String Tipo;
 
     public Usuario() {
     }
 
-    public Usuario(String Username, String Password, int Edad) {
+    public Usuario(String Username, String Password, int Edad, String Tipo) {
         this.Username = Username;
         this.Password = Password;
         this.Edad = Edad;
+        this.Tipo = Tipo;
     }
 
     public String getUsername() {
@@ -37,6 +39,14 @@ public class Usuario {
 
     public void setEdad(int Edad) {
         this.Edad = Edad;
+    }
+
+    public String getTipo() {
+        return Tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.Tipo = tipo;
     }
 
     @Override

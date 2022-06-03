@@ -12,7 +12,7 @@ public class Cliente extends Usuario {
     }
 
     public Cliente(String Username, String Password, int Edad) {
-        super(Username, Password, Edad);
+        super(Username, Password, Edad, "Cliente");
     }
 
     public ArrayList<Cancion> getFavorites() {

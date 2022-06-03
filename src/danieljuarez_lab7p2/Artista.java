@@ -12,7 +12,7 @@ public class Artista extends Usuario {
     }
 
     public Artista(String NombreArtistico, String Username, String Password, int Edad) {
-        super(Username, Password, Edad);
+        super(Username, Password, Edad, "Artista");
         this.NombreArtistico = NombreArtistico;
     }
 

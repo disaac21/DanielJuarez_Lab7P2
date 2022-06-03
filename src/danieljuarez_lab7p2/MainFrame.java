@@ -24,6 +24,8 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
+    static Usuario Current;
+
     public MainFrame() {
         initComponents();
     }
@@ -38,6 +40,14 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         SpotifyType = new javax.swing.ButtonGroup();
+        ArtistWindow = new javax.swing.JDialog();
+        SpotifyForArtists = new javax.swing.JLabel();
+        UploadSingleButton = new javax.swing.JButton();
+        UploadAlbumButton = new javax.swing.JButton();
+        ArtistTreeScrollPane = new javax.swing.JScrollPane();
+        ArtistTree = new javax.swing.JTree();
+        UserWindow = new javax.swing.JDialog();
+        SpotifyForClients = new javax.swing.JLabel();
         SignUpTitle = new javax.swing.JLabel();
         Spotify = new javax.swing.JRadioButton();
         SpotifyArtists = new javax.swing.JRadioButton();
@@ -51,6 +61,77 @@ public class MainFrame extends javax.swing.JFrame {
         tf_Edad = new javax.swing.JTextField();
         LogIn = new javax.swing.JButton();
         SignUp = new javax.swing.JButton();
+
+        SpotifyForArtists.setText("Spotify For Artists");
+
+        UploadSingleButton.setText("Upload Single");
+        UploadSingleButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                UploadSingleButtonMouseClicked(evt);
+            }
+        });
+        UploadSingleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UploadSingleButtonActionPerformed(evt);
+            }
+        });
+
+        UploadAlbumButton.setText("Upload Album");
+        UploadAlbumButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UploadAlbumButtonActionPerformed(evt);
+            }
+        });
+
+        ArtistTreeScrollPane.setViewportView(ArtistTree);
+
+        javax.swing.GroupLayout ArtistWindowLayout = new javax.swing.GroupLayout(ArtistWindow.getContentPane());
+        ArtistWindow.getContentPane().setLayout(ArtistWindowLayout);
+        ArtistWindowLayout.setHorizontalGroup(
+            ArtistWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ArtistWindowLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ArtistWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(SpotifyForArtists)
+                    .addGroup(ArtistWindowLayout.createSequentialGroup()
+                        .addComponent(UploadSingleButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(UploadAlbumButton))
+                    .addComponent(ArtistTreeScrollPane))
+                .addContainerGap(478, Short.MAX_VALUE))
+        );
+        ArtistWindowLayout.setVerticalGroup(
+            ArtistWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ArtistWindowLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(SpotifyForArtists)
+                .addGap(18, 18, 18)
+                .addGroup(ArtistWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(UploadSingleButton)
+                    .addComponent(UploadAlbumButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(ArtistTreeScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        SpotifyForClients.setText("Spotify");
+
+        javax.swing.GroupLayout UserWindowLayout = new javax.swing.GroupLayout(UserWindow.getContentPane());
+        UserWindow.getContentPane().setLayout(UserWindowLayout);
+        UserWindowLayout.setHorizontalGroup(
+            UserWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(UserWindowLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(SpotifyForClients)
+                .addContainerGap(656, Short.MAX_VALUE))
+        );
+        UserWindowLayout.setVerticalGroup(
+            UserWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(UserWindowLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(SpotifyForClients)
+                .addContainerGap(375, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,6 +175,11 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         LogIn.setText("Log In");
+        LogIn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LogInMouseClicked(evt);
+            }
+        });
 
         SignUp.setText("Sign Up");
         SignUp.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -191,6 +277,7 @@ public class MainFrame extends javax.swing.JFrame {
         if (existe) {
             JOptionPane.showMessageDialog(this, "El Usuario Ya Existe, Haga Log In.");
             tf_Username.setText("");
+            tf_NombreArtistico.setText("");
             tf_Password.setText("");
             tf_Edad.setText("");
             Spotify.setSelected(false);
@@ -225,6 +312,7 @@ public class MainFrame extends javax.swing.JFrame {
             } catch (Exception e) {
             }
             tf_Username.setText("");
+            tf_NombreArtistico.setText("");
             tf_Password.setText("");
             tf_Edad.setText("");
             Spotify.setSelected(false);
@@ -235,6 +323,45 @@ public class MainFrame extends javax.swing.JFrame {
     private void tf_NombreArtisticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_NombreArtisticoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_NombreArtisticoActionPerformed
+
+    private void LogInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogInMouseClicked
+        boolean existe = false;
+        for (int i = 0; i < AllUsers.size(); i++) {
+            if (tf_Username.getText().equals(AllUsers.get(i).getUsername())) {
+                existe = true;
+                Current = AllUsers.get(i);
+            }
+        }
+        if (existe) {
+            if (Current.getTipo().equals("Artista")) {
+                ArtistWindow.setModal(true);
+                ArtistWindow.pack();
+                ArtistWindow.setLocationRelativeTo(this);
+                ArtistWindow.setVisible(true);
+            }
+            if (Current.getTipo().equals("Cliente")) {
+                UserWindow.setModal(true);
+                UserWindow.pack();
+                UserWindow.setLocationRelativeTo(this);
+                UserWindow.setVisible(true);
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "El Usuario No Existe, Haga Sign Up.");
+        }
+    }//GEN-LAST:event_LogInMouseClicked
+
+    private void UploadAlbumButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UploadAlbumButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UploadAlbumButtonActionPerformed
+
+    private void UploadSingleButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UploadSingleButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UploadSingleButtonMouseClicked
+
+    private void UploadSingleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UploadSingleButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UploadSingleButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -272,6 +399,9 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTree ArtistTree;
+    private javax.swing.JScrollPane ArtistTreeScrollPane;
+    private javax.swing.JDialog ArtistWindow;
     private javax.swing.JLabel Edad;
     private javax.swing.JButton LogIn;
     private javax.swing.JLabel NombreArtistico;
@@ -280,7 +410,12 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel SignUpTitle;
     private javax.swing.JRadioButton Spotify;
     private javax.swing.JRadioButton SpotifyArtists;
+    private javax.swing.JLabel SpotifyForArtists;
+    private javax.swing.JLabel SpotifyForClients;
     private javax.swing.ButtonGroup SpotifyType;
+    private javax.swing.JButton UploadAlbumButton;
+    private javax.swing.JButton UploadSingleButton;
+    private javax.swing.JDialog UserWindow;
     private javax.swing.JLabel Username;
     private javax.swing.JTextField tf_Edad;
     private javax.swing.JTextField tf_NombreArtistico;
