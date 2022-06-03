@@ -24,7 +24,7 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
-    static Usuario Current;
+    static Usuario Current = null;
 
     public MainFrame() {
         initComponents();
@@ -53,6 +53,13 @@ public class MainFrame extends javax.swing.JFrame {
         SingleFecha = new javax.swing.JLabel();
         FechaChooser = new com.toedter.calendar.JDateChooser();
         CrearSingleButton = new javax.swing.JButton();
+        UploadAlbumFrame = new javax.swing.JDialog();
+        UploadSingle1 = new javax.swing.JLabel();
+        SingleTitle1 = new javax.swing.JLabel();
+        tf_SingleTitulo1 = new javax.swing.JTextField();
+        SingleFecha1 = new javax.swing.JLabel();
+        FechaChooser1 = new com.toedter.calendar.JDateChooser();
+        CrearSingleButton1 = new javax.swing.JButton();
         CreateSongFrame = new javax.swing.JDialog();
         CreateSong = new javax.swing.JLabel();
         SongTitulo = new javax.swing.JLabel();
@@ -91,6 +98,11 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         UploadAlbumButton.setText("Upload Album");
+        UploadAlbumButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                UploadAlbumButtonMouseClicked(evt);
+            }
+        });
         UploadAlbumButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UploadAlbumButtonActionPerformed(evt);
@@ -181,6 +193,62 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(FechaChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addComponent(CrearSingleButton)
+                .addContainerGap(214, Short.MAX_VALUE))
+        );
+
+        UploadSingle1.setText("Upload Single");
+
+        SingleTitle1.setText("Título");
+
+        SingleFecha1.setText("Fecha");
+
+        CrearSingleButton1.setText("Crear");
+        CrearSingleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CrearSingleButton1MouseClicked(evt);
+            }
+        });
+        CrearSingleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrearSingleButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout UploadAlbumFrameLayout = new javax.swing.GroupLayout(UploadAlbumFrame.getContentPane());
+        UploadAlbumFrame.getContentPane().setLayout(UploadAlbumFrameLayout);
+        UploadAlbumFrameLayout.setHorizontalGroup(
+            UploadAlbumFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(UploadAlbumFrameLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(UploadAlbumFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(CrearSingleButton1)
+                    .addGroup(UploadAlbumFrameLayout.createSequentialGroup()
+                        .addGroup(UploadAlbumFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(UploadSingle1)
+                            .addComponent(SingleTitle1)
+                            .addComponent(SingleFecha1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(UploadAlbumFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tf_SingleTitulo1)
+                            .addComponent(FechaChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))))
+                .addContainerGap(517, Short.MAX_VALUE))
+        );
+        UploadAlbumFrameLayout.setVerticalGroup(
+            UploadAlbumFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(UploadAlbumFrameLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(UploadSingle1)
+                .addGap(64, 64, 64)
+                .addGroup(UploadAlbumFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(UploadAlbumFrameLayout.createSequentialGroup()
+                        .addGroup(UploadAlbumFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(SingleTitle1)
+                            .addComponent(tf_SingleTitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(SingleFecha1))
+                    .addComponent(FechaChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addComponent(CrearSingleButton1)
                 .addContainerGap(214, Short.MAX_VALUE))
         );
 
@@ -505,8 +573,8 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_tf_SongTituloActionPerformed
 
     private void CrearSongButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CrearSongButtonMouseClicked
-        Cancion song = new Cancion(tf_SongTitulo.getText(), Double.parseDouble(tf_SongDuracion.getText()), null);
-        Single NewLan = new Single(song, tf_SingleTitulo.getText(), FechaChooser.getDate(), 0);
+        Cancion Song = new Cancion(tf_SongTitulo.getText(), Double.parseDouble(tf_SongDuracion.getText()), null);
+        Single NewLan = new Single(Song, tf_SingleTitulo.getText(), FechaChooser.getDate(), 0);
         NewLan.getInSingle().setReferencia(NewLan);
         
         JOptionPane.showMessageDialog(this, "Single & Cancion Creados");
@@ -515,11 +583,34 @@ public class MainFrame extends javax.swing.JFrame {
         CreateSongFrame.setVisible(false);
         UploadSingleFrame.setModal(false);
         UploadSingleFrame.setVisible(false);
+        
+        ((Artista)Current).Releases.add(NewLan);
+        ((Artista)Current).Uploads.add(Song);
+        
+        tf_SongTitulo.setText("");
+        tf_SongDuracion.setText("");
+        tf_SingleTitulo.setText("");
+        FechaChooser.setDate(null);
     }//GEN-LAST:event_CrearSongButtonMouseClicked
 
     private void CrearSingleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearSingleButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CrearSingleButtonActionPerformed
+
+    private void CrearSingleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CrearSingleButton1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CrearSingleButton1MouseClicked
+
+    private void CrearSingleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearSingleButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CrearSingleButton1ActionPerformed
+
+    private void UploadAlbumButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UploadAlbumButtonMouseClicked
+        UploadAlbumFrame.setModal(true);
+        UploadAlbumFrame.pack();
+        UploadAlbumFrame.setLocationRelativeTo(this);
+        UploadAlbumFrame.setVisible(true);
+    }//GEN-LAST:event_UploadAlbumButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -561,18 +652,22 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane ArtistTreeScrollPane;
     private javax.swing.JDialog ArtistWindow;
     private javax.swing.JButton CrearSingleButton;
+    private javax.swing.JButton CrearSingleButton1;
     private javax.swing.JButton CrearSongButton;
     private javax.swing.JLabel CreateSong;
     private javax.swing.JDialog CreateSongFrame;
     private javax.swing.JLabel Edad;
     private com.toedter.calendar.JDateChooser FechaChooser;
+    private com.toedter.calendar.JDateChooser FechaChooser1;
     private javax.swing.JButton LogIn;
     private javax.swing.JLabel NombreArtistico;
     private javax.swing.JLabel Password;
     private javax.swing.JButton SignUp;
     private javax.swing.JLabel SignUpTitle;
     private javax.swing.JLabel SingleFecha;
+    private javax.swing.JLabel SingleFecha1;
     private javax.swing.JLabel SingleTitle;
+    private javax.swing.JLabel SingleTitle1;
     private javax.swing.JLabel SongDuracion;
     private javax.swing.JLabel SongTitulo;
     private javax.swing.JRadioButton Spotify;
@@ -581,7 +676,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel SpotifyForClients;
     private javax.swing.ButtonGroup SpotifyType;
     private javax.swing.JButton UploadAlbumButton;
+    private javax.swing.JDialog UploadAlbumFrame;
     private javax.swing.JLabel UploadSingle;
+    private javax.swing.JLabel UploadSingle1;
     private javax.swing.JButton UploadSingleButton;
     private javax.swing.JDialog UploadSingleFrame;
     private javax.swing.JDialog UserWindow;
@@ -590,6 +687,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField tf_NombreArtistico;
     private javax.swing.JTextField tf_Password;
     private javax.swing.JTextField tf_SingleTitulo;
+    private javax.swing.JTextField tf_SingleTitulo1;
     private javax.swing.JTextField tf_SongDuracion;
     private javax.swing.JTextField tf_SongTitulo;
     private javax.swing.JTextField tf_Username;
