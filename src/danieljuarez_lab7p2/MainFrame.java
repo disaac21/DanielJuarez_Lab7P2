@@ -183,38 +183,25 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void SignUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignUpMouseClicked
         boolean existe = false;
-        File f = null;
-        FileReader fr = null;
-        BufferedReader br = null;
-        try {
-            f = new File("./SpotifyUsers.txt");
-            fr = new FileReader(f);
-            br = new BufferedReader(fr);
-            String linea;
-            while ((linea = br.readLine()) != null) {
-                String[] tokens = linea.split(";");
-                System.out.println(tokens[0]);
-                if (tokens[0].equals(tf_Username.getText())) {
-                    existe = true;
-                    break;
-                }
+        for (int i = 0; i < AllUsers.size(); i++) {
+            if (tf_Username.getText().equals(AllUsers.get(i).getUsername())) {
+                existe = true;
             }
-            br.close();
-            fr.close();
-        } catch (Exception e) {
-
         }
-
         if (existe) {
             JOptionPane.showMessageDialog(this, "El Usuario Ya Existe, Haga Log In.");
+            tf_Username.setText("");
+            tf_Password.setText("");
+            tf_Edad.setText("");
+            Spotify.setSelected(false);
+            SpotifyArtists.setSelected(false);
         } else {
             Date Fecha;
             Fecha = new Date();
             FileWriter fw = null;
             BufferedWriter bw = null;
-            //Procesar
             try {
-
+                File f = null;
                 f = new File("./SpotifyUsers.txt");
                 fw = new FileWriter(f, true); //si NO EXISTE -> Crea || sí YA EXISTE -> Agrega
                 bw = new BufferedWriter(fw);
@@ -242,7 +229,6 @@ public class MainFrame extends javax.swing.JFrame {
             tf_Edad.setText("");
             Spotify.setSelected(false);
             SpotifyArtists.setSelected(false);
-
         }
     }//GEN-LAST:event_SignUpMouseClicked
 
@@ -301,6 +287,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField tf_Password;
     private javax.swing.JTextField tf_Username;
     // End of variables declaration//GEN-END:variables
-    public ArrayList <Usuario> AllUsers = new ArrayList();
+    public ArrayList<Usuario> AllUsers = new ArrayList();
 
 }
