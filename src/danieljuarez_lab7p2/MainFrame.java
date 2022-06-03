@@ -46,6 +46,20 @@ public class MainFrame extends javax.swing.JFrame {
         UploadAlbumButton = new javax.swing.JButton();
         ArtistTreeScrollPane = new javax.swing.JScrollPane();
         ArtistTree = new javax.swing.JTree();
+        UploadSingleFrame = new javax.swing.JDialog();
+        UploadSingle = new javax.swing.JLabel();
+        SingleTitle = new javax.swing.JLabel();
+        tf_SingleTitulo = new javax.swing.JTextField();
+        SingleFecha = new javax.swing.JLabel();
+        FechaChooser = new com.toedter.calendar.JDateChooser();
+        CrearSingleButton = new javax.swing.JButton();
+        CreateSongFrame = new javax.swing.JDialog();
+        CreateSong = new javax.swing.JLabel();
+        SongTitulo = new javax.swing.JLabel();
+        tf_SongTitulo = new javax.swing.JTextField();
+        SongDuracion = new javax.swing.JLabel();
+        tf_SongDuracion = new javax.swing.JTextField();
+        CrearSongButton = new javax.swing.JButton();
         UserWindow = new javax.swing.JDialog();
         SpotifyForClients = new javax.swing.JLabel();
         SignUpTitle = new javax.swing.JLabel();
@@ -112,6 +126,120 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(ArtistTreeScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+        );
+
+        UploadSingle.setText("Upload Single");
+
+        SingleTitle.setText("Título");
+
+        SingleFecha.setText("Fecha");
+
+        CrearSingleButton.setText("Crear");
+        CrearSingleButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CrearSingleButtonMouseClicked(evt);
+            }
+        });
+        CrearSingleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrearSingleButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout UploadSingleFrameLayout = new javax.swing.GroupLayout(UploadSingleFrame.getContentPane());
+        UploadSingleFrame.getContentPane().setLayout(UploadSingleFrameLayout);
+        UploadSingleFrameLayout.setHorizontalGroup(
+            UploadSingleFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(UploadSingleFrameLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(UploadSingleFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(CrearSingleButton)
+                    .addGroup(UploadSingleFrameLayout.createSequentialGroup()
+                        .addGroup(UploadSingleFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(UploadSingle)
+                            .addComponent(SingleTitle)
+                            .addComponent(SingleFecha))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(UploadSingleFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tf_SingleTitulo)
+                            .addComponent(FechaChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))))
+                .addContainerGap(517, Short.MAX_VALUE))
+        );
+        UploadSingleFrameLayout.setVerticalGroup(
+            UploadSingleFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(UploadSingleFrameLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(UploadSingle)
+                .addGap(64, 64, 64)
+                .addGroup(UploadSingleFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(UploadSingleFrameLayout.createSequentialGroup()
+                        .addGroup(UploadSingleFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(SingleTitle)
+                            .addComponent(tf_SingleTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(SingleFecha))
+                    .addComponent(FechaChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addComponent(CrearSingleButton)
+                .addContainerGap(214, Short.MAX_VALUE))
+        );
+
+        CreateSong.setText("Create Song");
+
+        SongTitulo.setText("Título");
+
+        tf_SongTitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_SongTituloActionPerformed(evt);
+            }
+        });
+
+        SongDuracion.setText("Duración");
+
+        CrearSongButton.setText("Crear");
+        CrearSongButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CrearSongButtonMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout CreateSongFrameLayout = new javax.swing.GroupLayout(CreateSongFrame.getContentPane());
+        CreateSongFrame.getContentPane().setLayout(CreateSongFrameLayout);
+        CreateSongFrameLayout.setHorizontalGroup(
+            CreateSongFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CreateSongFrameLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(CreateSongFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CreateSong)
+                    .addGroup(CreateSongFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(CrearSongButton)
+                        .addGroup(CreateSongFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, CreateSongFrameLayout.createSequentialGroup()
+                                .addComponent(SongTitulo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(tf_SongTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, CreateSongFrameLayout.createSequentialGroup()
+                                .addComponent(SongDuracion)
+                                .addGap(18, 18, 18)
+                                .addComponent(tf_SongDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(529, Short.MAX_VALUE))
+        );
+        CreateSongFrameLayout.setVerticalGroup(
+            CreateSongFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CreateSongFrameLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(CreateSong)
+                .addGap(43, 43, 43)
+                .addGroup(CreateSongFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SongTitulo)
+                    .addComponent(tf_SongTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(CreateSongFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SongDuracion)
+                    .addComponent(tf_SongDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(CrearSongButton)
+                .addContainerGap(233, Short.MAX_VALUE))
         );
 
         SpotifyForClients.setText("Spotify");
@@ -344,7 +472,6 @@ public class MainFrame extends javax.swing.JFrame {
                 UserWindow.pack();
                 UserWindow.setLocationRelativeTo(this);
                 UserWindow.setVisible(true);
-
             }
         } else {
             JOptionPane.showMessageDialog(this, "El Usuario No Existe, Haga Sign Up.");
@@ -356,12 +483,43 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_UploadAlbumButtonActionPerformed
 
     private void UploadSingleButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UploadSingleButtonMouseClicked
-        // TODO add your handling code here:
+        UploadSingleFrame.setModal(true);
+        UploadSingleFrame.pack();
+        UploadSingleFrame.setLocationRelativeTo(this);
+        UploadSingleFrame.setVisible(true);
     }//GEN-LAST:event_UploadSingleButtonMouseClicked
 
     private void UploadSingleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UploadSingleButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_UploadSingleButtonActionPerformed
+
+    private void CrearSingleButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CrearSingleButtonMouseClicked
+        CreateSongFrame.setModal(true);
+        CreateSongFrame.pack();
+        CreateSongFrame.setLocationRelativeTo(this);
+        CreateSongFrame.setVisible(true);
+    }//GEN-LAST:event_CrearSingleButtonMouseClicked
+
+    private void tf_SongTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_SongTituloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_SongTituloActionPerformed
+
+    private void CrearSongButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CrearSongButtonMouseClicked
+        Cancion song = new Cancion(tf_SongTitulo.getText(), Double.parseDouble(tf_SongDuracion.getText()), null);
+        Single NewLan = new Single(song, tf_SingleTitulo.getText(), FechaChooser.getDate(), 0);
+        NewLan.getInSingle().setReferencia(NewLan);
+        
+        JOptionPane.showMessageDialog(this, "Single & Cancion Creados");
+        
+        CreateSongFrame.setModal(false);
+        CreateSongFrame.setVisible(false);
+        UploadSingleFrame.setModal(false);
+        UploadSingleFrame.setVisible(false);
+    }//GEN-LAST:event_CrearSongButtonMouseClicked
+
+    private void CrearSingleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearSingleButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CrearSingleButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -402,24 +560,38 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTree ArtistTree;
     private javax.swing.JScrollPane ArtistTreeScrollPane;
     private javax.swing.JDialog ArtistWindow;
+    private javax.swing.JButton CrearSingleButton;
+    private javax.swing.JButton CrearSongButton;
+    private javax.swing.JLabel CreateSong;
+    private javax.swing.JDialog CreateSongFrame;
     private javax.swing.JLabel Edad;
+    private com.toedter.calendar.JDateChooser FechaChooser;
     private javax.swing.JButton LogIn;
     private javax.swing.JLabel NombreArtistico;
     private javax.swing.JLabel Password;
     private javax.swing.JButton SignUp;
     private javax.swing.JLabel SignUpTitle;
+    private javax.swing.JLabel SingleFecha;
+    private javax.swing.JLabel SingleTitle;
+    private javax.swing.JLabel SongDuracion;
+    private javax.swing.JLabel SongTitulo;
     private javax.swing.JRadioButton Spotify;
     private javax.swing.JRadioButton SpotifyArtists;
     private javax.swing.JLabel SpotifyForArtists;
     private javax.swing.JLabel SpotifyForClients;
     private javax.swing.ButtonGroup SpotifyType;
     private javax.swing.JButton UploadAlbumButton;
+    private javax.swing.JLabel UploadSingle;
     private javax.swing.JButton UploadSingleButton;
+    private javax.swing.JDialog UploadSingleFrame;
     private javax.swing.JDialog UserWindow;
     private javax.swing.JLabel Username;
     private javax.swing.JTextField tf_Edad;
     private javax.swing.JTextField tf_NombreArtistico;
     private javax.swing.JTextField tf_Password;
+    private javax.swing.JTextField tf_SingleTitulo;
+    private javax.swing.JTextField tf_SongDuracion;
+    private javax.swing.JTextField tf_SongTitulo;
     private javax.swing.JTextField tf_Username;
     // End of variables declaration//GEN-END:variables
     public ArrayList<Usuario> AllUsers = new ArrayList();

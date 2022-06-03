@@ -6,7 +6,7 @@ public class Artista extends Usuario {
     
     public String NombreArtistico;
     public ArrayList <Cancion> Uploads = new ArrayList();
-    public ArrayList <Album> Releases = new ArrayList();
+    public ArrayList <Lanzamiento> Releases = new ArrayList();
 
     public Artista() {
     }
@@ -32,11 +32,11 @@ public class Artista extends Usuario {
         this.Uploads = Uploads;
     }
 
-    public ArrayList<Album> getReleases() {
+    public ArrayList<Lanzamiento> getReleases() {
         return Releases;
     }
 
-    public void setReleases(ArrayList<Album> Releases) {
+    public void setReleases(ArrayList<Lanzamiento> Releases) {
         this.Releases = Releases;
     }
 

@@ -4,12 +4,12 @@ public class Cancion {
     
     public String TituloCancion;
     public Double Duracion;
-    public Album Referencia;
+    public Lanzamiento Referencia;
 
     public Cancion() {
     }
     
-    public Cancion(String TituloCancion, Double Duracion, Album Referencia) {
+    public Cancion(String TituloCancion, Double Duracion, Lanzamiento Referencia) {
         this.TituloCancion = TituloCancion;
         this.Duracion = Duracion;
         this.Referencia = Referencia;
@@ -31,11 +31,11 @@ public class Cancion {
         this.Duracion = Duracion;
     }
 
-    public Album getReferencia() {
+    public Lanzamiento getReferencia() {
         return Referencia;
     }
 
-    public void setReferencia(Album Referencia) {
+    public void setReferencia(Lanzamiento Referencia) {
         this.Referencia = Referencia;
     }
 
