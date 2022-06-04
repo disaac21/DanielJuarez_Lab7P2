@@ -96,7 +96,6 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         NuevaPlaylistButton = new javax.swing.JButton();
         MeGustaButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         BrowsePopUp = new javax.swing.JPopupMenu();
         AddToPlaylist = new javax.swing.JMenuItem();
         Like = new javax.swing.JMenuItem();
@@ -474,8 +473,6 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Agregar a Playlist");
-
         javax.swing.GroupLayout UserWindowLayout = new javax.swing.GroupLayout(UserWindow.getContentPane());
         UserWindow.getContentPane().setLayout(UserWindowLayout);
         UserWindowLayout.setHorizontalGroup(
@@ -490,9 +487,7 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGroup(UserWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(UserWindowLayout.createSequentialGroup()
-                                .addGroup(UserWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(NuevaPlaylistButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(NuevaPlaylistButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(MeGustaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -529,13 +524,12 @@ public class MainFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(UserWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(MeGustaButton)
-                            .addComponent(NuevaPlaylistButton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
-                .addGap(17, 17, 17))
+                            .addComponent(NuevaPlaylistButton))))
+                .addGap(25, 25, 25))
         );
 
         AddToPlaylist.setText("Add a Playlist");
+        AddToPlaylist.setActionCommand("Add To Playlist");
         AddToPlaylist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddToPlaylistActionPerformed(evt);
@@ -1071,7 +1065,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JDialog UploadSingleFrame;
     private javax.swing.JDialog UserWindow;
     private javax.swing.JLabel Username;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
