@@ -18,3 +18,9 @@ messi;Artista;Fri Jun 03 18:22:37 CST 2022
 messi;Artista;Fri Jun 03 18:27:34 CST 2022
 messi;Artista;Fri Jun 03 18:32:14 CST 2022
 messi;Artista;Fri Jun 03 18:45:24 CST 2022
+messi;Regular;Fri Jun 03 18:50:38 CST 2022
+messi;Artista;Fri Jun 03 18:59:28 CST 2022
+cr7;Regular;Fri Jun 03 19:00:29 CST 2022
+messi;Regular;Fri Jun 03 19:11:51 CST 2022
+
+messi;Regular;Fri Jun 03 19:20:41 CST 2022

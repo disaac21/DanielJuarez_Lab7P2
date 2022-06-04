@@ -85,6 +85,21 @@ public class MainFrame extends javax.swing.JFrame {
         CrearSongButton1 = new javax.swing.JButton();
         UserWindow = new javax.swing.JDialog();
         SpotifyForClients = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        PlayListTree = new javax.swing.JTree();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        BrowseTree = new javax.swing.JTree();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        LikesList = new javax.swing.JList<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        NuevaPlaylistButton = new javax.swing.JButton();
+        MeGustaButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        BrowsePopUp = new javax.swing.JPopupMenu();
+        AddToPlaylist = new javax.swing.JMenuItem();
+        Like = new javax.swing.JMenuItem();
         SignUpTitle = new javax.swing.JLabel();
         Spotify = new javax.swing.JRadioButton();
         SpotifyArtists = new javax.swing.JRadioButton();
@@ -208,7 +223,8 @@ public class MainFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(UploadSingleFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tf_SingleTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(SingleFechaChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(SingleFechaChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(447, Short.MAX_VALUE))
         );
         UploadSingleFrameLayout.setVerticalGroup(
             UploadSingleFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -427,22 +443,113 @@ public class MainFrame extends javax.swing.JFrame {
 
         SpotifyForClients.setText("Spotify");
 
+        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Mis Playlists");
+        PlayListTree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane1.setViewportView(PlayListTree);
+
+        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Biblioteca Global");
+        BrowseTree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        BrowseTree.setComponentPopupMenu(BrowsePopUp);
+        jScrollPane2.setViewportView(BrowseTree);
+
+        jScrollPane3.setViewportView(LikesList);
+
+        jLabel1.setText("Listas de Reproducción");
+
+        jLabel2.setText("Me Gusta");
+
+        jLabel3.setText("Browse");
+
+        NuevaPlaylistButton.setText("Nueva Playlist");
+        NuevaPlaylistButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                NuevaPlaylistButtonMouseClicked(evt);
+            }
+        });
+
+        MeGustaButton.setText("Me Gusta");
+        MeGustaButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MeGustaButtonMouseClicked(evt);
+            }
+        });
+
+        jButton1.setText("Agregar a Playlist");
+
         javax.swing.GroupLayout UserWindowLayout = new javax.swing.GroupLayout(UserWindow.getContentPane());
         UserWindow.getContentPane().setLayout(UserWindowLayout);
         UserWindowLayout.setHorizontalGroup(
             UserWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(UserWindowLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(SpotifyForClients)
-                .addContainerGap(656, Short.MAX_VALUE))
+                .addGroup(UserWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(UserWindowLayout.createSequentialGroup()
+                        .addComponent(SpotifyForClients)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(UserWindowLayout.createSequentialGroup()
+                        .addGroup(UserWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(UserWindowLayout.createSequentialGroup()
+                                .addGroup(UserWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(NuevaPlaylistButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(MeGustaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))))
+            .addGroup(UserWindowLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jLabel1)
+                .addGap(163, 163, 163)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(107, 107, 107))
         );
         UserWindowLayout.setVerticalGroup(
             UserWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(UserWindowLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UserWindowLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(SpotifyForClients)
-                .addContainerGap(375, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addGroup(UserWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(UserWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(UserWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane3)
+                        .addComponent(jScrollPane2))
+                    .addGroup(UserWindowLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(UserWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(MeGustaButton)
+                            .addComponent(NuevaPlaylistButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)))
+                .addGap(17, 17, 17))
         );
+
+        AddToPlaylist.setText("Add a Playlist");
+        AddToPlaylist.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddToPlaylistActionPerformed(evt);
+            }
+        });
+        BrowsePopUp.add(AddToPlaylist);
+
+        Like.setText("Like");
+        Like.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LikeActionPerformed(evt);
+            }
+        });
+        BrowsePopUp.add(Like);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -716,6 +823,22 @@ public class MainFrame extends javax.swing.JFrame {
         Lanzamientos.add(nodo_single);
         nodo_single.add(nodo_cancion);
         m.reload();
+        DefaultTreeModel t = (DefaultTreeModel) BrowseTree.getModel();
+        DefaultMutableTreeNode Lanzamientos1
+                = (DefaultMutableTreeNode) t.getRoot();
+        DefaultMutableTreeNode nodo_single1;
+        nodo_single1
+                = new DefaultMutableTreeNode(
+                        NewLan.getTitulo()
+                );
+        DefaultMutableTreeNode nodo_cancion1;
+        nodo_cancion1
+                = new DefaultMutableTreeNode(
+                        Song.getTituloCancion()
+                );
+        Lanzamientos1.add(nodo_single1);
+        nodo_single1.add(nodo_cancion1);
+        t.reload();
         ((Artista) Current).Releases.add(NewLan);
         ((Artista) Current).Uploads.add(Song);
 
@@ -828,10 +951,39 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_LanzamientosTreeMouseClicked
 
     private void ListarTreeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListarTreeMouseClicked
-        for (int i = 0; i < 10; i++) {
-
-        }
+        
     }//GEN-LAST:event_ListarTreeMouseClicked
+
+    private void NuevaPlaylistButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NuevaPlaylistButtonMouseClicked
+        //PLAYLIST
+        String nombrepl = JOptionPane.showInputDialog(this, "Ingrese el Nombre de la Playlist");
+        Playlist pl = new Playlist(nombrepl, 0);
+        ((Cliente)Current).Created.add(pl);
+        
+        DefaultTreeModel m = (DefaultTreeModel) PlayListTree.getModel();
+        DefaultMutableTreeNode MisPlaylists
+                = (DefaultMutableTreeNode) m.getRoot();
+        DefaultMutableTreeNode nodo_play;
+        nodo_play
+                = new DefaultMutableTreeNode(
+                        pl.getNombrePlaylist()
+                );
+        MisPlaylists.add(nodo_play);
+        m.reload();
+        
+    }//GEN-LAST:event_NuevaPlaylistButtonMouseClicked
+
+    private void MeGustaButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MeGustaButtonMouseClicked
+        
+    }//GEN-LAST:event_MeGustaButtonMouseClicked
+
+    private void AddToPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddToPlaylistActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AddToPlaylistActionPerformed
+
+    private void LikeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LikeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LikeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -869,10 +1021,13 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem AddToPlaylist;
     private javax.swing.JLabel AlbumFecha;
     private com.toedter.calendar.JDateChooser AlbumFechaChooser;
     private javax.swing.JLabel AlbumTitle;
     private javax.swing.JDialog ArtistWindow;
+    private javax.swing.JPopupMenu BrowsePopUp;
+    private javax.swing.JTree BrowseTree;
     private javax.swing.JButton CrearAlbumButton;
     private javax.swing.JButton CrearSingleButton;
     private javax.swing.JButton CrearSongButton;
@@ -885,10 +1040,15 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel Edad;
     private javax.swing.JScrollPane LanzamientosScroll;
     private javax.swing.JTree LanzamientosTree;
+    private javax.swing.JMenuItem Like;
+    private javax.swing.JList<String> LikesList;
     private javax.swing.JButton ListarTree;
     private javax.swing.JButton LogIn;
+    private javax.swing.JButton MeGustaButton;
     private javax.swing.JLabel NombreArtistico;
+    private javax.swing.JButton NuevaPlaylistButton;
     private javax.swing.JLabel Password;
+    private javax.swing.JTree PlayListTree;
     private javax.swing.JButton SignUp;
     private javax.swing.JLabel SignUpTitle;
     private javax.swing.JLabel SingleFecha;
@@ -911,6 +1071,13 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JDialog UploadSingleFrame;
     private javax.swing.JDialog UserWindow;
     private javax.swing.JLabel Username;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField tf_AlbumTitulo;
     private javax.swing.JTextField tf_CuentaCanciones;
     private javax.swing.JTextField tf_Edad;
