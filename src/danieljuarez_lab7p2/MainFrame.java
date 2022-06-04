@@ -25,6 +25,8 @@ public class MainFrame extends javax.swing.JFrame {
      * Creates new form MainFrame
      */
     static Usuario Current = null;
+    static Album CurrentAlbum = null;
+    static int cont = 0;
 
     public MainFrame() {
         initComponents();
@@ -69,6 +71,13 @@ public class MainFrame extends javax.swing.JFrame {
         SongDuracion = new javax.swing.JLabel();
         tf_SongDuracion = new javax.swing.JTextField();
         CrearSongButton = new javax.swing.JButton();
+        CreateSongFrame1 = new javax.swing.JDialog();
+        CreateSong1 = new javax.swing.JLabel();
+        SongTitulo1 = new javax.swing.JLabel();
+        tf_SongTitulo1 = new javax.swing.JTextField();
+        SongDuracion1 = new javax.swing.JLabel();
+        tf_SongDuracion1 = new javax.swing.JTextField();
+        CrearSongButton1 = new javax.swing.JButton();
         UserWindow = new javax.swing.JDialog();
         SpotifyForClients = new javax.swing.JLabel();
         SignUpTitle = new javax.swing.JLabel();
@@ -167,17 +176,16 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(UploadSingleFrameLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(UploadSingleFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(CrearSingleButton)
-                    .addGroup(UploadSingleFrameLayout.createSequentialGroup()
+                    .addComponent(CrearSingleButton, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, UploadSingleFrameLayout.createSequentialGroup()
                         .addGroup(UploadSingleFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(UploadSingle)
                             .addComponent(SingleTitle)
                             .addComponent(SingleFecha))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(UploadSingleFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tf_SingleTitulo)
-                            .addComponent(SingleFechaChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))))
-                .addContainerGap(517, Short.MAX_VALUE))
+                        .addGroup(UploadSingleFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tf_SingleTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(SingleFechaChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
         UploadSingleFrameLayout.setVerticalGroup(
             UploadSingleFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,7 +234,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(UploadAlbumFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(UploadAlbumFrameLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(CrearAlbumButton))
+                        .addComponent(CrearAlbumButton)
+                        .addGap(78, 78, 78))
                     .addGroup(UploadAlbumFrameLayout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addGroup(UploadAlbumFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,10 +251,12 @@ public class MainFrame extends javax.swing.JFrame {
                                         .addComponent(AlbumTitle)
                                         .addGap(13, 13, 13)))
                                 .addGroup(UploadAlbumFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(AlbumFechaChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                                     .addComponent(tf_CuentaCanciones)
-                                    .addComponent(tf_AlbumTitulo))))))
-                .addGap(480, 480, 480))
+                                    .addComponent(tf_AlbumTitulo)
+                                    .addGroup(UploadAlbumFrameLayout.createSequentialGroup()
+                                        .addComponent(AlbumFechaChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))))
+                .addGap(402, 402, 402))
         );
         UploadAlbumFrameLayout.setVerticalGroup(
             UploadAlbumFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -325,6 +336,69 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(tf_SongDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(CrearSongButton)
+                .addContainerGap(233, Short.MAX_VALUE))
+        );
+
+        CreateSong1.setText("Create Song");
+
+        SongTitulo1.setText("Título");
+
+        tf_SongTitulo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_SongTitulo1ActionPerformed(evt);
+            }
+        });
+
+        SongDuracion1.setText("Duración");
+
+        CrearSongButton1.setText("Crear");
+        CrearSongButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CrearSongButton1MouseClicked(evt);
+            }
+        });
+        CrearSongButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrearSongButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout CreateSongFrame1Layout = new javax.swing.GroupLayout(CreateSongFrame1.getContentPane());
+        CreateSongFrame1.getContentPane().setLayout(CreateSongFrame1Layout);
+        CreateSongFrame1Layout.setHorizontalGroup(
+            CreateSongFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CreateSongFrame1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(CreateSongFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CreateSong1)
+                    .addGroup(CreateSongFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(CrearSongButton1)
+                        .addGroup(CreateSongFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, CreateSongFrame1Layout.createSequentialGroup()
+                                .addComponent(SongTitulo1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(tf_SongTitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, CreateSongFrame1Layout.createSequentialGroup()
+                                .addComponent(SongDuracion1)
+                                .addGap(18, 18, 18)
+                                .addComponent(tf_SongDuracion1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(529, Short.MAX_VALUE))
+        );
+        CreateSongFrame1Layout.setVerticalGroup(
+            CreateSongFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CreateSongFrame1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(CreateSong1)
+                .addGap(43, 43, 43)
+                .addGroup(CreateSongFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SongTitulo1)
+                    .addComponent(tf_SongTitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(CreateSongFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SongDuracion1)
+                    .addComponent(tf_SongDuracion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(CrearSongButton1)
                 .addContainerGap(233, Short.MAX_VALUE))
         );
 
@@ -591,30 +665,24 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_tf_SongTituloActionPerformed
 
     private void CrearSongButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CrearSongButtonMouseClicked
-        
-        int cont = 0;
-        int limit = 0;
-        
-        while (cont <= limit) {
-            Cancion Song = new Cancion(tf_SongTitulo.getText(), Double.parseDouble(tf_SongDuracion.getText()), null);
-            Single NewLan = new Single(Song, tf_SingleTitulo.getText(), SingleFechaChooser.getDate(), 0);
-            NewLan.getInSingle().setReferencia(NewLan);
+        Cancion Song = new Cancion(tf_SongTitulo.getText(), Double.parseDouble(tf_SongDuracion.getText()), null);
+        Single NewLan = new Single(Song, tf_SingleTitulo.getText(), SingleFechaChooser.getDate(), 0);
+        NewLan.getInSingle().setReferencia(NewLan);
 
-            JOptionPane.showMessageDialog(this, "Single & Cancion Creados");
+        JOptionPane.showMessageDialog(this, "Single & Cancion Creados");
 
-            CreateSongFrame.setModal(false);
-            CreateSongFrame.setVisible(false);
-            UploadSingleFrame.setModal(false);
-            UploadSingleFrame.setVisible(false);
+        CreateSongFrame.setModal(false);
+        CreateSongFrame.setVisible(false);
+        UploadSingleFrame.setModal(false);
+        UploadSingleFrame.setVisible(false);
 
-            ((Artista) Current).Releases.add(NewLan);
-            ((Artista) Current).Uploads.add(Song);
+        ((Artista) Current).Releases.add(NewLan);
+        ((Artista) Current).Uploads.add(Song);
 
-            tf_SongTitulo.setText("");
-            tf_SongDuracion.setText("");
-            tf_SingleTitulo.setText("");
-            SingleFechaChooser.setDate(null);
-        }
+        tf_SongTitulo.setText("");
+        tf_SongDuracion.setText("");
+        tf_SingleTitulo.setText("");
+        SingleFechaChooser.setDate(null);
     }//GEN-LAST:event_CrearSongButtonMouseClicked
 
     private void CrearSingleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearSingleButtonActionPerformed
@@ -622,10 +690,14 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_CrearSingleButtonActionPerformed
 
     private void CrearAlbumButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CrearAlbumButtonMouseClicked
-        CreateSongFrame.setModal(true);
-        CreateSongFrame.pack();
-        CreateSongFrame.setLocationRelativeTo(this);
-        CreateSongFrame.setVisible(true);
+        Album NewAlbum = new Album(Integer.parseInt(tf_CuentaCanciones.getText()), tf_AlbumTitulo.getText(), AlbumFechaChooser.getDate(), 0);
+        CurrentAlbum = NewAlbum;
+        JOptionPane.showMessageDialog(this, "Album Creado");
+        CreateSongFrame1.setModal(true);
+        CreateSongFrame1.pack();
+        CreateSongFrame1.setLocationRelativeTo(this);
+        CreateSongFrame1.setVisible(true);
+        cont = 1;
     }//GEN-LAST:event_CrearAlbumButtonMouseClicked
 
     private void CrearAlbumButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearAlbumButtonActionPerformed
@@ -638,6 +710,45 @@ public class MainFrame extends javax.swing.JFrame {
         UploadAlbumFrame.setLocationRelativeTo(this);
         UploadAlbumFrame.setVisible(true);
     }//GEN-LAST:event_UploadAlbumButtonMouseClicked
+
+    private void tf_SongTitulo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_SongTitulo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_SongTitulo1ActionPerformed
+
+    private void CrearSongButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CrearSongButton1MouseClicked
+
+        
+        System.out.println(Integer.parseInt(tf_CuentaCanciones.getText()));
+
+        while (cont <= CurrentAlbum.getCuentaCanciones()) {
+            System.out.println(cont);
+            Cancion Song = new Cancion(tf_SongTitulo1.getText(), Double.parseDouble(tf_SongDuracion1.getText()), CurrentAlbum);
+            JOptionPane.showMessageDialog(this, "Cancion Creada");
+            tf_SongTitulo1.setText("");
+            tf_SongDuracion1.setText("");
+            tf_SingleTitulo.setText("");
+            SingleFechaChooser.setDate(null);
+            cont++;
+        }
+
+        tf_SongTitulo1.setText("");
+        tf_SongDuracion1.setText("");
+        tf_SingleTitulo.setText("");
+        SingleFechaChooser.setDate(null);
+        
+        CreateSongFrame1.setModal(false);
+        CreateSongFrame1.setVisible(false);
+        UploadSingleFrame.setModal(false);
+        UploadSingleFrame.setVisible(false);
+
+        ((Artista) Current).Releases.add(CurrentAlbum);
+        JOptionPane.showMessageDialog(rootPane, "Added Album");
+        
+    }//GEN-LAST:event_CrearSongButton1MouseClicked
+
+    private void CrearSongButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearSongButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CrearSongButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -684,8 +795,11 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton CrearAlbumButton;
     private javax.swing.JButton CrearSingleButton;
     private javax.swing.JButton CrearSongButton;
+    private javax.swing.JButton CrearSongButton1;
     private javax.swing.JLabel CreateSong;
+    private javax.swing.JLabel CreateSong1;
     private javax.swing.JDialog CreateSongFrame;
+    private javax.swing.JDialog CreateSongFrame1;
     private javax.swing.JLabel CuentaCanciones;
     private javax.swing.JLabel Edad;
     private javax.swing.JButton LogIn;
@@ -697,7 +811,9 @@ public class MainFrame extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser SingleFechaChooser;
     private javax.swing.JLabel SingleTitle;
     private javax.swing.JLabel SongDuracion;
+    private javax.swing.JLabel SongDuracion1;
     private javax.swing.JLabel SongTitulo;
+    private javax.swing.JLabel SongTitulo1;
     private javax.swing.JRadioButton Spotify;
     private javax.swing.JRadioButton SpotifyArtists;
     private javax.swing.JLabel SpotifyForArtists;
@@ -718,7 +834,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField tf_Password;
     private javax.swing.JTextField tf_SingleTitulo;
     private javax.swing.JTextField tf_SongDuracion;
+    private javax.swing.JTextField tf_SongDuracion1;
     private javax.swing.JTextField tf_SongTitulo;
+    private javax.swing.JTextField tf_SongTitulo1;
     private javax.swing.JTextField tf_Username;
     // End of variables declaration//GEN-END:variables
     public ArrayList<Usuario> AllUsers = new ArrayList();
