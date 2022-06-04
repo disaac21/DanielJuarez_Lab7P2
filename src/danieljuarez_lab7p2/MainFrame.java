@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -27,7 +29,9 @@ public class MainFrame extends javax.swing.JFrame {
     static Usuario Current = null;
     static Album CurrentAlbum = null;
     static int cont = 0;
-
+    DefaultTreeModel m = null;
+    DefaultMutableTreeNode nodo_album = null;
+    DefaultMutableTreeNode Lanzamientos = null;
     public MainFrame() {
         initComponents();
     }
@@ -46,8 +50,9 @@ public class MainFrame extends javax.swing.JFrame {
         SpotifyForArtists = new javax.swing.JLabel();
         UploadSingleButton = new javax.swing.JButton();
         UploadAlbumButton = new javax.swing.JButton();
-        ArtistTreeScrollPane = new javax.swing.JScrollPane();
-        ArtistTree = new javax.swing.JTree();
+        LanzamientosScroll = new javax.swing.JScrollPane();
+        LanzamientosTree = new javax.swing.JTree();
+        ListarTree = new javax.swing.JButton();
         UploadSingleFrame = new javax.swing.JDialog();
         UploadSingle = new javax.swing.JLabel();
         SingleTitle = new javax.swing.JLabel();
@@ -120,7 +125,21 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        ArtistTreeScrollPane.setViewportView(ArtistTree);
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Lanzamientos");
+        LanzamientosTree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        LanzamientosTree.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LanzamientosTreeMouseClicked(evt);
+            }
+        });
+        LanzamientosScroll.setViewportView(LanzamientosTree);
+
+        ListarTree.setText("Listar");
+        ListarTree.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ListarTreeMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout ArtistWindowLayout = new javax.swing.GroupLayout(ArtistWindow.getContentPane());
         ArtistWindow.getContentPane().setLayout(ArtistWindowLayout);
@@ -128,14 +147,17 @@ public class MainFrame extends javax.swing.JFrame {
             ArtistWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ArtistWindowLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(ArtistWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(ArtistWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(SpotifyForArtists)
-                    .addGroup(ArtistWindowLayout.createSequentialGroup()
-                        .addComponent(UploadSingleButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(UploadAlbumButton))
-                    .addComponent(ArtistTreeScrollPane))
-                .addContainerGap(478, Short.MAX_VALUE))
+                    .addGroup(ArtistWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(ArtistWindowLayout.createSequentialGroup()
+                            .addComponent(UploadSingleButton)
+                            .addGap(18, 18, 18)
+                            .addComponent(UploadAlbumButton)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ListarTree))
+                        .addComponent(LanzamientosScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(369, Short.MAX_VALUE))
         );
         ArtistWindowLayout.setVerticalGroup(
             ArtistWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,10 +167,11 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(ArtistWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(UploadSingleButton)
-                    .addComponent(UploadAlbumButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(ArtistTreeScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addComponent(UploadAlbumButton)
+                    .addComponent(ListarTree))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(LanzamientosScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         UploadSingle.setText("Upload Single");
@@ -654,6 +677,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_UploadSingleButtonActionPerformed
 
     private void CrearSingleButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CrearSingleButtonMouseClicked
+
         CreateSongFrame.setModal(true);
         CreateSongFrame.pack();
         CreateSongFrame.setLocationRelativeTo(this);
@@ -676,6 +700,22 @@ public class MainFrame extends javax.swing.JFrame {
         UploadSingleFrame.setModal(false);
         UploadSingleFrame.setVisible(false);
 
+        DefaultTreeModel m = (DefaultTreeModel) LanzamientosTree.getModel();
+        DefaultMutableTreeNode Lanzamientos
+                = (DefaultMutableTreeNode) m.getRoot();
+        DefaultMutableTreeNode nodo_single;
+        nodo_single
+                = new DefaultMutableTreeNode(
+                        NewLan.getTitulo()
+                );
+        DefaultMutableTreeNode nodo_cancion;
+        nodo_cancion
+                = new DefaultMutableTreeNode(
+                        Song.getTituloCancion()
+                );
+        Lanzamientos.add(nodo_single);
+        nodo_single.add(nodo_cancion);
+        m.reload();
         ((Artista) Current).Releases.add(NewLan);
         ((Artista) Current).Uploads.add(Song);
 
@@ -697,6 +737,11 @@ public class MainFrame extends javax.swing.JFrame {
         CreateSongFrame1.pack();
         CreateSongFrame1.setLocationRelativeTo(this);
         CreateSongFrame1.setVisible(true);
+        
+        m = (DefaultTreeModel) LanzamientosTree.getModel();
+        Lanzamientos = (DefaultMutableTreeNode) m.getRoot();
+        nodo_album= new DefaultMutableTreeNode(CurrentAlbum.getTitulo());
+        
         cont = 1;
     }//GEN-LAST:event_CrearAlbumButtonMouseClicked
 
@@ -717,25 +762,34 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void CrearSongButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CrearSongButton1MouseClicked
 
-        
         System.out.println(Integer.parseInt(tf_CuentaCanciones.getText()));
 
         while (cont <= CurrentAlbum.getCuentaCanciones()) {
             System.out.println(cont);
             Cancion Song = new Cancion(tf_SongTitulo1.getText(), Double.parseDouble(tf_SongDuracion1.getText()), CurrentAlbum);
             JOptionPane.showMessageDialog(this, "Cancion Creada");
+
+            DefaultMutableTreeNode nodo_cancion;
+            nodo_cancion
+                    = new DefaultMutableTreeNode(
+                            Song.getTituloCancion()
+                    );
+            nodo_album.add(nodo_cancion);
+
             tf_SongTitulo1.setText("");
             tf_SongDuracion1.setText("");
             tf_SingleTitulo.setText("");
             SingleFechaChooser.setDate(null);
             cont++;
         }
-
+        Lanzamientos.add(nodo_album);
+        m.reload();
+        
         tf_SongTitulo1.setText("");
         tf_SongDuracion1.setText("");
         tf_SingleTitulo.setText("");
         SingleFechaChooser.setDate(null);
-        
+
         CreateSongFrame1.setModal(false);
         CreateSongFrame1.setVisible(false);
         UploadSingleFrame.setModal(false);
@@ -743,12 +797,41 @@ public class MainFrame extends javax.swing.JFrame {
 
         ((Artista) Current).Releases.add(CurrentAlbum);
         JOptionPane.showMessageDialog(rootPane, "Added Album");
-        
+
     }//GEN-LAST:event_CrearSongButton1MouseClicked
 
     private void CrearSongButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearSongButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CrearSongButton1ActionPerformed
+
+    private void LanzamientosTreeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LanzamientosTreeMouseClicked
+        // TODO add your handling code here:
+        //        System.out.println(evt.getButton());
+        //        if (evt.getButton() == 3) {
+        //            //seleccionar un nodo con click derecho
+        //            int row = jt_personas.getClosestRowForLocation(
+        //                    evt.getX(), evt.getY());
+        //            jt_personas.setSelectionRow(row);
+        //            Object v1
+        //                    = jt_personas.getSelectionPath().
+        //                    getLastPathComponent();
+        //            nodo_seleccionado = (DefaultMutableTreeNode) v1;
+        //            if (nodo_seleccionado.getUserObject() instanceof Persona) {
+        //                persona_seleccionada
+        //                        = (Persona) nodo_seleccionado.
+        //                        getUserObject();
+        //                menu_popup.show(evt.getComponent(),
+        //                        evt.getX(), evt.getY());
+        //            }
+        //
+        //        }
+    }//GEN-LAST:event_LanzamientosTreeMouseClicked
+
+    private void ListarTreeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListarTreeMouseClicked
+        for (int i = 0; i < 10; i++) {
+
+        }
+    }//GEN-LAST:event_ListarTreeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -789,8 +872,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel AlbumFecha;
     private com.toedter.calendar.JDateChooser AlbumFechaChooser;
     private javax.swing.JLabel AlbumTitle;
-    private javax.swing.JTree ArtistTree;
-    private javax.swing.JScrollPane ArtistTreeScrollPane;
     private javax.swing.JDialog ArtistWindow;
     private javax.swing.JButton CrearAlbumButton;
     private javax.swing.JButton CrearSingleButton;
@@ -802,6 +883,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JDialog CreateSongFrame1;
     private javax.swing.JLabel CuentaCanciones;
     private javax.swing.JLabel Edad;
+    private javax.swing.JScrollPane LanzamientosScroll;
+    private javax.swing.JTree LanzamientosTree;
+    private javax.swing.JButton ListarTree;
     private javax.swing.JButton LogIn;
     private javax.swing.JLabel NombreArtistico;
     private javax.swing.JLabel Password;
