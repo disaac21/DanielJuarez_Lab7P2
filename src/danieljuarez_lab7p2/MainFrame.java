@@ -53,6 +53,7 @@ public class MainFrame extends javax.swing.JFrame {
         LanzamientosScroll = new javax.swing.JScrollPane();
         LanzamientosTree = new javax.swing.JTree();
         ListarTree = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         UploadSingleFrame = new javax.swing.JDialog();
         UploadSingle = new javax.swing.JLabel();
         SingleTitle = new javax.swing.JLabel();
@@ -60,6 +61,7 @@ public class MainFrame extends javax.swing.JFrame {
         SingleFecha = new javax.swing.JLabel();
         SingleFechaChooser = new com.toedter.calendar.JDateChooser();
         CrearSingleButton = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
         UploadAlbumFrame = new javax.swing.JDialog();
         UploadAlbum = new javax.swing.JLabel();
         AlbumTitle = new javax.swing.JLabel();
@@ -69,6 +71,7 @@ public class MainFrame extends javax.swing.JFrame {
         CuentaCanciones = new javax.swing.JLabel();
         tf_CuentaCanciones = new javax.swing.JTextField();
         CrearAlbumButton = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
         CreateSongFrame = new javax.swing.JDialog();
         CreateSong = new javax.swing.JLabel();
         SongTitulo = new javax.swing.JLabel();
@@ -76,6 +79,7 @@ public class MainFrame extends javax.swing.JFrame {
         SongDuracion = new javax.swing.JLabel();
         tf_SongDuracion = new javax.swing.JTextField();
         CrearSongButton = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
         CreateSongFrame1 = new javax.swing.JDialog();
         CreateSong1 = new javax.swing.JLabel();
         SongTitulo1 = new javax.swing.JLabel();
@@ -83,6 +87,7 @@ public class MainFrame extends javax.swing.JFrame {
         SongDuracion1 = new javax.swing.JLabel();
         tf_SongDuracion1 = new javax.swing.JTextField();
         CrearSongButton1 = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
         UserWindow = new javax.swing.JDialog();
         SpotifyForClients = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -99,6 +104,7 @@ public class MainFrame extends javax.swing.JFrame {
         BrowsePopUp = new javax.swing.JPopupMenu();
         AddToPlaylist = new javax.swing.JMenuItem();
         Like = new javax.swing.JMenuItem();
+        jPanel1 = new javax.swing.JPanel();
         SignUpTitle = new javax.swing.JLabel();
         Spotify = new javax.swing.JRadioButton();
         SpotifyArtists = new javax.swing.JRadioButton();
@@ -155,6 +161,19 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        jPanel2.setBackground(new java.awt.Color(102, 255, 51));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 222, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout ArtistWindowLayout = new javax.swing.GroupLayout(ArtistWindow.getContentPane());
         ArtistWindow.getContentPane().setLayout(ArtistWindowLayout);
         ArtistWindowLayout.setHorizontalGroup(
@@ -171,7 +190,8 @@ public class MainFrame extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ListarTree))
                         .addComponent(LanzamientosScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(369, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         ArtistWindowLayout.setVerticalGroup(
             ArtistWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,6 +206,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LanzamientosScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(20, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         UploadSingle.setText("Upload Single");
@@ -206,6 +227,19 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        jPanel3.setBackground(new java.awt.Color(102, 255, 51));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 222, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout UploadSingleFrameLayout = new javax.swing.GroupLayout(UploadSingleFrame.getContentPane());
         UploadSingleFrame.getContentPane().setLayout(UploadSingleFrameLayout);
         UploadSingleFrameLayout.setHorizontalGroup(
@@ -223,7 +257,8 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGroup(UploadSingleFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tf_SingleTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(SingleFechaChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(447, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 225, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         UploadSingleFrameLayout.setVerticalGroup(
             UploadSingleFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,6 +277,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(CrearSingleButton)
                 .addContainerGap(214, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         UploadAlbum.setText("Upload Album");
@@ -263,6 +299,19 @@ public class MainFrame extends javax.swing.JFrame {
                 CrearAlbumButtonActionPerformed(evt);
             }
         });
+
+        jPanel4.setBackground(new java.awt.Color(102, 255, 51));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 222, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout UploadAlbumFrameLayout = new javax.swing.GroupLayout(UploadAlbumFrame.getContentPane());
         UploadAlbumFrame.getContentPane().setLayout(UploadAlbumFrameLayout);
@@ -294,7 +343,8 @@ public class MainFrame extends javax.swing.JFrame {
                                     .addGroup(UploadAlbumFrameLayout.createSequentialGroup()
                                         .addComponent(AlbumFechaChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE)))))))
-                .addGap(402, 402, 402))
+                .addGap(180, 180, 180)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         UploadAlbumFrameLayout.setVerticalGroup(
             UploadAlbumFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,6 +367,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(51, 51, 51)
                 .addComponent(CrearAlbumButton)
                 .addContainerGap(147, Short.MAX_VALUE))
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         CreateSong.setText("Create Song");
@@ -338,6 +389,19 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        jPanel5.setBackground(new java.awt.Color(102, 255, 51));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 222, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout CreateSongFrameLayout = new javax.swing.GroupLayout(CreateSongFrame.getContentPane());
         CreateSongFrame.getContentPane().setLayout(CreateSongFrameLayout);
         CreateSongFrameLayout.setHorizontalGroup(
@@ -357,7 +421,8 @@ public class MainFrame extends javax.swing.JFrame {
                                 .addComponent(SongDuracion)
                                 .addGap(18, 18, 18)
                                 .addComponent(tf_SongDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(529, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 307, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         CreateSongFrameLayout.setVerticalGroup(
             CreateSongFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -375,6 +440,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(CrearSongButton)
                 .addContainerGap(233, Short.MAX_VALUE))
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         CreateSong1.setText("Create Song");
@@ -401,6 +467,19 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        jPanel6.setBackground(new java.awt.Color(102, 255, 51));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 222, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout CreateSongFrame1Layout = new javax.swing.GroupLayout(CreateSongFrame1.getContentPane());
         CreateSongFrame1.getContentPane().setLayout(CreateSongFrame1Layout);
         CreateSongFrame1Layout.setHorizontalGroup(
@@ -420,7 +499,8 @@ public class MainFrame extends javax.swing.JFrame {
                                 .addComponent(SongDuracion1)
                                 .addGap(18, 18, 18)
                                 .addComponent(tf_SongDuracion1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(529, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 307, Short.MAX_VALUE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         CreateSongFrame1Layout.setVerticalGroup(
             CreateSongFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -438,6 +518,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(CrearSongButton1)
                 .addContainerGap(233, Short.MAX_VALUE))
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         SpotifyForClients.setText("Spotify");
@@ -547,6 +628,19 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(102, 255, 51));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 469, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         SignUpTitle.setText("Spotify Sign Up");
 
         SpotifyType.add(Spotify);
@@ -610,7 +704,8 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(LogIn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(SignUp))
+                        .addComponent(SignUp)
+                        .addGap(33, 33, 33))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(SignUpTitle)
@@ -629,8 +724,8 @@ public class MainFrame extends javax.swing.JFrame {
                             .addComponent(Password)
                             .addComponent(Edad)
                             .addComponent(NombreArtistico))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap(502, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -662,6 +757,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(LogIn)
                     .addComponent(SignUp))
                 .addContainerGap(122, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -1068,6 +1164,12 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
